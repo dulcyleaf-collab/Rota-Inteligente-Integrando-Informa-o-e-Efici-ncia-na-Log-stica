@@ -144,10 +144,14 @@
       }
     }
 
+    // Redirecionamento correto conforme o perfil selecionado
     function handleLogin(e) {
       e.preventDefault();
-      const username = document.getElementById('username').value;
-      alert(`Login efetuado com sucesso!\nPerfil: ${activeRole === 'expedicao' ? 'Expedição / Roteirização' : 'Motorista (App Offline)'}\nUsuário: ${username}`);
+      if (activeRole === 'expedicao') {
+        window.location.href = 'dashboard.html';
+      } else {
+        window.location.href = 'motorista.html';
+      }
     }
 
     // Monitoramento do estado de rede (Online / Offline)
