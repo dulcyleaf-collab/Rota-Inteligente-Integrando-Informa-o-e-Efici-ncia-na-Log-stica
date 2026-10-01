@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rota Inteligente — Painel da Expedição</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Cabeçalho / Navbar -->
+  <header class="bg-slate-800 border-b border-slate-700 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center">
+        <i class="fa-solid fa-truck-fast text-lg"></i>
+      </div>
+      <div>
+        <h1 class="font-bold text-lg text-white leading-tight">Rota Inteligente</h1>
+        <p class="text-xs text-slate-400">Painel de Planejamento e Expedição</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="text-xs px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800 font-medium">
+        <i class="fa-solid fa-wifi text-xs mr-1"></i> Online
+      </span>
+      <a href="index.html" class="text-xs text-slate-400 hover:text-white transition-colors flex items-center gap-1.5">
+        <i class="fa-solid fa-right-from-bracket"></i> Sair
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-1 p-6 space-y-6 max-w-7xl mx-auto w-full">
+
+    <!-- Cards de Indicadores (KPIs) -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4">
+        <p class="text-xs font-medium text-slate-400">Pedidos Pendentes</p>
+        <p class="text-2xl font-bold text-white mt-1">18</p>
+        <span class="text-[10px] text-blue-400">Prontos para roteirização</span>
+      </div>
+
+      <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4">
+        <p class="text-xs font-medium text-slate-400">Veículos Disponíveis</p>
+        <p class="text-2xl font-bold text-emerald-400 mt-1">4 <span class="text-sm font-normal text-slate-400">/ 5</span></p>
+        <span class="text-[10px] text-emerald-400">Frota operacional</span>
+      </div>
+
+      <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4">
+        <p class="text-xs font-medium text-slate-400">Taxa de Ocupação Médual</p>
+        <p class="text-2xl font-bold text-amber-400 mt-1">82%</p>
+        <span class="text-[10px] text-amber-400">Eficiência de cubagem</span>
+      </div>
+
+      <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4">
+        <p class="text-xs font-medium text-slate-400">Restrições Críticas</p>
+        <p class="text-2xl font-bold text-red-400 mt-1">3</p>
+        <span class="text-[10px] text-red-400">Janelas de horário / Acesso</span>
+      </div>
+    </div>
+
+    <!-- Seção Principal: Tabela de Pedidos e Simulação -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Tabela de Pedidos na Fila (2 Colunas no Desktop) -->
+      <div class="lg:col-span-2 bg-slate-800/80 border border-slate-700/60 rounded-2xl p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="font-semibold text-white text-base">Fila de Entregas & Restrições de Clientes</h2>
+          <button class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-lg transition-colors">
+            <i class="fa-solid fa-plus text-xs mr-1"></i> Importar Pedidos
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-900/60 text-slate-400 uppercase font-semibold">
+              <tr>
+                <th class="p-3">NF / Cliente</th>
+                <th class="p-3">Destino</th>
+                <th class="p-3">Volume / Peso</th>
+                <th class="p-3">Restrição</th>
+                <th class="p-3 text-right">Ação</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-700/50">
+              <tr>
+                <td class="p-3 font-medium text-white">NF-1042<br><span class="text-slate-400 text-[11px]">Distribuidora Silva</span></td>
+                <td class="p-3">Goiânia - GO</td>
+                <td class="p-3">1.2 m³ / 350 kg</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Recebe até 12h</span></td>
+                <td class="p-3 text-right"><input type="checkbox" checked class="rounded bg-slate-900 border-slate-700 text-blue-600"></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-white">NF-1043<br><span class="text-slate-400 text-[11px]">Embalagens Central</span></td>
+                <td class="p-3">Aparecida - GO</td>
+                <td class="p-3">3.5 m³ / 890 kg</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Sem restrição</span></td>
+                <td class="p-3 text-right"><input type="checkbox" checked class="rounded bg-slate-900 border-slate-700 text-blue-600"></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-white">NF-1044<br><span class="text-slate-400 text-[11px]">Indústria Sul</span></td>
+                <td class="p-3">Anápolis - GO</td>
+                <td class="p-3">2.1 m³ / 500 kg</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/20">Apenas VUC</span></td>
+                <td class="p-3 text-right"><input type="checkbox" checked class="rounded bg-slate-900 border-slate-700 text-blue-600"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Painel de Montagem da Rota / Cubagem (1 Coluna) -->
+      <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-5 space-y-4">
+        <h2 class="font-semibold text-white text-base">Planejar Carregamento</h2>
+
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs font-medium text-slate-300 block mb-1">Selecionar Veículo</label>
+            <select class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white">
+              <option>Caminhão Toco (Cap: 16m³ / 5.000kg)</option>
+              <option>VUC (Cap: 10m³ / 3.000kg)</option>
+              <option>Truck (Cap: 32m³ / 12.000kg)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-xs font-medium text-slate-300 block mb-1">Atribuir Motorista</label>
+            <select class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white">
+              <option>MOT-1042 — Carlos Oliveira</option>
+              <option>MOT-1088 — Marcos Souza</option>
+            </select>
+          </div>
+
+          <!-- Barra de Progresso da Cubagem -->
+          <div class="pt-2 space-y-1.5">
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Ocupação do Volume (m³)</span>
+              <span class="font-semibold text-emerald-400">6.8 / 16 m³ (42%)</span>
+            </div>
+            <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+              <div class="h-full bg-emerald-500 rounded-full" style="width: 42%;"></div>
+            </div>
+          </div>
+
+          <button onclick="alert('Rota gerada e enviada com sucesso para o app do motorista!')" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded-xl shadow-lg shadow-blue-600/20 transition-all flex items-center justify-center gap-2 mt-4">
+            <i class="fa-solid fa-route"></i>
+            <span>Gerar Rota e Enviar ao Motorista</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
